@@ -34,14 +34,14 @@ const currentLocale = getLangFromUrl(Astro.url)
 </div>
 
 <script>
-  import { navigate } from 'astro:transitions/client';
+  // import { navigate } from 'astro:transitions/client';
   // Navigate to the selected option automatically.
   const selectEl = document.querySelector('#select-elm')
 
   async function navigateRoute(ev: Event) { 
     let pathname = (ev.target as HTMLSelectElement).value;
-    // window.location.pathname = pathname
-    navigate(pathname)
+    window.location.pathname = pathname
+    // navigate(pathname)
   }
 
   selectEl.addEventListener('change', navigateRoute);
