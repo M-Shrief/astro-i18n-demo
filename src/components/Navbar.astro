@@ -1,0 +1,40 @@
+---
+import {getLangFromUrl, useTranslations} from '../i18n/utils'
+import {defaultLang} from '../i18n/ui'
+// Components
+import LangPicker from './langPicker.astro';
+
+const currentLocale = getLangFromUrl(Astro.url)
+
+const t = useTranslations(currentLocale);
+---
+
+<header>
+    <nav>
+        <a href={currentLocale == defaultLang ? '/' : `/${currentLocale}`}>{t('nav').home}</a>
+        <a href={currentLocale == defaultLang ? '/about' : `/${currentLocale}/about`}>{t('nav').about}</a>
+    </nav>
+    <LangPicker />
+</header>
+
+<style>
+    header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    nav {
+        font-size: 1.2rem;        
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        margin: 0.2rem 0.5rem;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
